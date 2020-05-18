@@ -31,7 +31,7 @@ RESET:
 	out TCNT0, TEMP				;; count from 163 to generate 42 KHz with duty 50%
 	cbi 0x18, 0x01				;; PB1 initial 0V
 	cbi 0x18, 0x00				;; PB0 initial 0V 
-	sei							;; enable interrupts
+	sei					;; enable interrupts
 	rjmp MAIN
 EXT_INT0:
 	rjmp MAIN
@@ -73,7 +73,7 @@ MAIN:
 	;;additional nop to precisious delay adjust end
 	rcall DELAY 
 	rjmp MAIN
-DELAY:							;;Software delay subroutine
+DELAY:						;;Software delay subroutine
     ldi  r18, 63
     ldi  r19, 50
 L1: dec  r19
