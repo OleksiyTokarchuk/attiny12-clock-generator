@@ -2,7 +2,7 @@
  * generator.S
  *
  * Created: 17.05.2020 10:25:11
- * Author : Tokarchuk Olksiy
+ * Author : Tokarchuk Oleksiy
  */ 
 
 .include "tn12def.inc"
@@ -11,15 +11,15 @@
 .def MASK = R17					;; to store bit MASK for pin invertion
 
 .cseg
-.org 0x00 rjmp RESET			;; Reset interrupt handler
-.org 0x01 rjmp EXT_INT0			;; IRQ0 interrupt handler
-.org 0x02 rjmp PIN_CHANGE		;; Pin change interrupt handler
-.org 0x03 rjmp TIM0_OVF			;; Timer0 overflow interrupt handler
-.org 0x04 rjmp EE_RDY			;; EEPROM Ready interrupt handler
-.org 0x05 rjmp ANA_COMP			;; Analog Comparator interrupt handler
+.org 0x00 rjmp RESET			        ;; Reset interrupt handler
+.org 0x01 rjmp EXT_INT0				;; IRQ0 interrupt handler
+.org 0x02 rjmp PIN_CHANGE			;; Pin change interrupt handler
+.org 0x03 rjmp TIM0_OVF				;; Timer0 overflow interrupt handler
+.org 0x04 rjmp EE_RDY				;; EEPROM Ready interrupt handler
+.org 0x05 rjmp ANA_COMP				;; Analog Comparator interrupt handler
 
 RESET:
-	ldi MASK, 0b00000010		;; define bit mask for set/reset timer operation
+	ldi MASK, 0b00000010			;; define bit mask for set/reset timer operation
 	ldi TEMP, 0xFF 
 	out DDRB, TEMP				;; port as output
 	ldi TEMP, 0b00000100
